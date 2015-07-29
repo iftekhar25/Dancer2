@@ -1290,7 +1290,8 @@ keyword and the C<uploads> attribute:
     post '/upload/:file' => sub {
         my $upload_dir   = "MyApp/UPLOADS";
         my $filename     = params->{file};
-        my $uploadedFile = request->upload($filename);
+        my $uploadRequest = request->upload('file');
+        $uploadRequest->copy_to("/some/path/$filename");
     };
 
 =head1 CONFIGURATION
